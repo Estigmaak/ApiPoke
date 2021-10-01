@@ -5,8 +5,16 @@ const { Router } = require('express');
 
 const router = Router();
 
+const PokemonsRoutes = require('./pokemons.js');
+const PokePost = require('./pokemon.js');
+const TypesRoutes = require('./types.js');
+
 // Configurar los routers
+// Aqui van los middlewares
 // Ejemplo: router.use('/auth', authRouter);
 
+router.use('/pokemons', PokemonsRoutes); //HOME, NAME, ID
+router.use('/pokemon', PokePost); // POST
+router.use('/types', TypesRoutes); //TYPES
 
 module.exports = router;
