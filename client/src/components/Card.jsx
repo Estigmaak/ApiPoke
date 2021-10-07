@@ -2,7 +2,6 @@ import React from 'react';
 import { Fragment } from 'react';
 
 export default function Card({ name, hp, attack, defense, speed, height, weight, image, types }) {
-    console.log(types)
     return (
         <Fragment>
             <div>
@@ -14,7 +13,7 @@ export default function Card({ name, hp, attack, defense, speed, height, weight,
                 </div>
                 <div>
                     <h5>Types:</h5>
-                    <h5>{types}</h5>
+                    <h5 key={types}>{types}</h5>
                 </div>
             </div>
         </Fragment>

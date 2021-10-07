@@ -1,14 +1,25 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from '../actions/index.js';
+import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName } from '../actions/index.js';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import { Fragment } from 'react';
+import Paginate from './Paginate';
 
 export default function Home() {
+
     const dispatch = useDispatch();
-    const allPokemons = useSelector((state) => state.pokemons)
+    const allPokemons = useSelector((state) => state.pokemons) // me lo traigo del reducer el estado de allPokes...
+    const [currentPage, setCurrentPage] = useState(1); // Pagina actual / local
+    const [pokemonsPerPage, setPokemonsPerPage] = useState(12); // Pokes por pagina / local
+    const indexLastPoke = currentPage * pokemonsPerPage; // 12
+    const indexFirstPoke = indexLastPoke - pokemonsPerPage; // 0
+    const currentPokes = allPokemons.slice(indexFirstPoke, indexLastPoke);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     //ComponentDidMount
     useEffect(() => {
@@ -20,6 +31,18 @@ export default function Home() {
         dispatch(getPokemons());
     }
 
+    function handleFilterType(e){
+        dispatch(filterPokemonsByTypes(e.target.value));
+    }
+
+    function handleFilterCreated(e){
+        dispatch(filterPokemonsCreated(e.target.value));
+    }
+
+    function handleOrderByName(e){
+        dispatch(orderByName(e.target.value));
+    }
+
     return (
         <div>
             <Link to= '/pokemon'>Crear Pokemon</Link>
@@ -27,12 +50,12 @@ export default function Home() {
             <button onClick={e => {handleClick(e)}}>Recargar Pokemons</button>
             
             <div>
-                <select>
+                <select onChange={e => handleOrderByName(e)}>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
 
-                <select>
+                <select onChange={e => handleFilterType(e)}>
                     <option value='all'>Todos</option>
                     <option value='normal'>Normal</option>
                     <option value='fighting'>Fighting</option>
@@ -56,17 +79,18 @@ export default function Home() {
                     <option value='shadow'>Shadow</option>
                 </select>
 
-                <select>
+                <select onChange={e => handleFilterCreated(e)}>
                     <option value='all'>Todos</option>
                     <option value='created'>Creados</option>
                     <option value='api'>Existentes</option>
                 </select>
 
+
                 {
-                    allPokemons?.map(p => {
+                    currentPokes?.map(p => {
                         return (
                             <Fragment>
-                                <Link to={'/home/' + p.id}>
+                                <Link to={'/home/' + p.id} key={p.id}>
                                     <Card 
                                         name= {p.name}
                                         hp= {p.hp}
@@ -78,7 +102,7 @@ export default function Home() {
                                         image= {p.image}
                                         types= {p.types.map(e => {
                                                 return (
-                                                    <h5>{e.name.replace(/\b\w/g, l => l.toUpperCase())}</h5>
+                                                    <h5 key={e.name}>{e.name.replace(/\b\w/g, l => l.toUpperCase())}</h5>
                                                 )})}
                                         />
                                 </Link>
@@ -87,6 +111,13 @@ export default function Home() {
                     })
                 }
             </div>
+
+            <Paginate
+            pokemonsPerPage = {pokemonsPerPage}
+            allPokemons = {allPokemons.length}
+            paginate = {paginate}
+            />
+
         </div>
     )
 }

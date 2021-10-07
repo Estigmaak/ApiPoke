@@ -10,3 +10,31 @@ export function getPokemons(){
         })
     }
 }
+
+export function filterPokemonsByTypes(payload) {
+    return {
+        type: 'FILTER_BY_TYPE',
+        payload
+    }
+}
+
+export function filterPokemonsCreated(payload) {
+    return {
+        type: 'FILTER_CREATED',
+        payload
+    }
+}
+
+export function orderByName(payload) {
+    return {
+        type: 'ORDER_BY_NAME',
+        payload
+    }
+}
+
+export function orderByAttack(payload) {
+    return {
+        type: 'ORDER_BY_ATTACK',
+        payload
+    }
+}
