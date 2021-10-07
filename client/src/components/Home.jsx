@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 import { Fragment } from 'react';
 import Paginate from './Paginate';
+import SearchBar from './SearchBar';
 
 export default function Home() {
 
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons) // me lo traigo del reducer el estado de allPokes...
+    const [orden, setOrden] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // Pagina actual / local
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12); // Pokes por pagina / local
     const indexLastPoke = currentPage * pokemonsPerPage; // 12
@@ -40,7 +42,10 @@ export default function Home() {
     }
 
     function handleOrderByName(e){
+        e.preventDefault();
         dispatch(orderByName(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
     }
 
     return (
@@ -48,6 +53,8 @@ export default function Home() {
             <Link to= '/pokemon'>Crear Pokemon</Link>
             <h1>Home</h1>
             <button onClick={e => {handleClick(e)}}>Recargar Pokemons</button>
+
+            <SearchBar/>
             
             <div>
                 <select onChange={e => handleOrderByName(e)}>
