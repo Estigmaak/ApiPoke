@@ -15,16 +15,17 @@ export default function SearchBar () {
     function handleSubmit(e) {
         e.preventDefault(e);
         dispatch(getNamePokemons(name))
+        setName('');
     }
 
     return (
-        <div>
+        <form onSubmit = {(e) => handleSubmit(e)}>
             <input
                 type = 'text'
                 placeholder = 'Search Name...'
-                onChange = {handleInputChange(e)}
-            />
-            <button type = 'submit' onClick={(e) => handleSubmit(e)}>Buscar</button>
-        </div>
+                onChange = {(e) => handleInputChange(e)}
+                />
+            <button type = 'submit'>🔍</button>
+        </form>
     )
 }
