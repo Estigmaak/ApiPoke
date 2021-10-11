@@ -36,6 +36,13 @@ export default function PokemonCreate() {
         })
     }
 
+    function handleDelete(e) {
+        setInput({
+            ...input,
+            pokeTypes: input.pokeTypes.filter( type => type !== e)
+        })
+    }
+
     function handleSubmit(e){
         e.preventDefault();
         dispatch(postPokemon(input))
@@ -141,7 +148,12 @@ export default function PokemonCreate() {
                         <option value={type.name}>{type.name}</option>
                     ))}
                 </select>
-                <ul><li>{input.types.map(e => e + ' ,')}</li></ul>
+                {/* <ul><li>{input.types.map(e => e + ' ,')}</li></ul> */}
+                {input.pokeTypes.map(type => 
+                    <div>
+                        <p>{type.name}</p>
+                        <button onClick={(e) => handleDelete(e)}>❌</button>
+                    </div>)}
                 <button type="submit">Crear Pokemon</button>
             </form>
         </div>
