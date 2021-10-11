@@ -75,6 +75,7 @@ export default function Home() {
                     <option value='desc'>Descendente</option>
                 </select>
 
+                {/* Chequear esto */}
                 <select onChange={e => handleFilterType(e)}>
                     {pokeTypes.map((type) => (
                         <option value={type.name}>{type.name}</option>
