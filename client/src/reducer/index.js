@@ -5,7 +5,7 @@ const initialState = {
     pokeTypes : [],
 };
 
-function rootReducer (state= initialState, action) {
+function rootReducer (state = initialState, action) {
     switch (action.type) {
         case 'GET_POKEMONS':
             return {
@@ -73,6 +73,32 @@ function rootReducer (state= initialState, action) {
                 ...state,
                 pokemons: arrSort
             }
+        
+            case 'ORDER_BY_ATTACK':
+                let arrSortAttack = action.payload === 'asc' ?
+                state.allPokemons.sort(function (a, b) {
+                    if(a.attack > b.attack) {
+                        return 1;
+                    }
+                    if (b.attack > a.attack) {
+                        return -1;
+                    }
+                    return 0;
+                }) : //'desc'
+                state.allPokemons.sort(function (a, b) {
+                    if(a.attack > b.attack) {
+                        return -1;
+                    }
+                    if (b.attack > a.attack) {
+                        return 1;
+                    }
+                    return 0;
+                })
+                return {
+                    ...state,
+                    pokemons: arrSortAttack
+                }
+
         case 'GET_POKEMON_DETAIL':
             return{
                 ...state,

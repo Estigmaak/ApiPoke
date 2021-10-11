@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName } from '../actions/index.js';
+import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName, orderByAttack } from '../actions/index.js';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import { Fragment } from 'react';
@@ -49,6 +49,13 @@ export default function Home() {
         setOrden(`Ordenado ${e.target.value}`)
     }
 
+    function handleOrderByAttack(e){
+        e.preventDefault();
+        dispatch(orderByAttack(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+
     return (
         <div>
             <Link to= '/pokemon'>Crear Pokemon</Link>
@@ -59,6 +66,11 @@ export default function Home() {
             
             <div>
                 <select onChange={e => handleOrderByName(e)}>
+                    <option value='asc'>Ascendente</option>
+                    <option value='desc'>Descendente</option>
+                </select>
+
+                <select onChange={e => handleOrderByAttack(e)}>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
