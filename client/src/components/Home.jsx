@@ -1,14 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName, orderByAttack } from '../actions/index.js';
+import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName, orderByAttack, getPokemonDetail } from '../actions/index.js';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import { Fragment } from 'react';
 import Paginate from './Paginate';
 import SearchBar from './SearchBar';
+//import Detail from './Detail';
 
-export default function Home() {
+export default function Home(props) {
 
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons) // me lo traigo del reducer el estado de allPokes...
@@ -34,9 +35,9 @@ export default function Home() {
         dispatch(getPokemons());
     }
 
-    function handleFilterType(e){
-        dispatch(filterPokemonsByTypes(e.target.value));
-    }
+    // function handleFilterType(e){
+    //     dispatch(filterPokemonsByTypes(e.target.value));
+    // }
 
     function handleFilterCreated(e){
         dispatch(filterPokemonsCreated(e.target.value));
@@ -59,67 +60,68 @@ export default function Home() {
     return (
         <div>
             <Link to= '/pokemon'>Crear Pokemon</Link>
-            <h1>Home</h1>
-            <button onClick={e => {handleClick(e)}}>Recargar Pokemons</button>
-
-            <SearchBar/>
-            
             <div>
-                <select onChange={e => handleOrderByName(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
-                </select>
+                <button onClick={e => {handleClick(e)}}>Reload Pokemons</button>
 
-                <select onChange={e => handleOrderByAttack(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
-                </select>
+                <SearchBar/>
+                
+                <div>
+                    <select onChange={e => handleOrderByName(e)}>
+                        <option value='asc'>Name ASC</option>
+                        <option value='desc'>Name DESC</option>
+                    </select>
 
-                {/* Chequear esto */}
-                <select onChange={e => handleFilterType(e)}>
-                    {pokeTypes.map((type) => (
-                        <option value={type.name}>{type.name}</option>
-                    ))}
-                </select>
+                    <select onChange={e => handleOrderByAttack(e)}>
+                        <option value='asc'>Attack ASC</option>
+                        <option value='desc'>Attack DESC</option>
+                    </select>
 
-                <select onChange={e => handleFilterCreated(e)}>
-                    <option value='all'>Todos</option>
-                    <option value='created'>Creados</option>
-                    <option value='api'>Existentes</option>
-                </select>
+                    {/* Chequear esto */}
+                    {/* <select onChange={e => handleFilterType(e)}>
+                        {pokeTypes.map((type) => (
+                            <option value={type.name}>{type.name}</option>
+                        ))}
+                    </select> */}
+
+                    <select onChange={e => handleFilterCreated(e)}>
+                        <option value='all'>Todos</option>
+                        <option value='created'>Creados</option>
+                        <option value='api'>Existentes</option>
+                    </select>
 
 
-                {
-                    currentPokes?.map(p => {
-                        return (
-                            <Fragment>
-                                <Link to={'/home/' + p.id} key={p.id}>
-                                    <Card 
-                                        name= {p.name}
-                                        hp= {p.hp}
-                                        attack= {p.attack}
-                                        defense= {p.defense}
-                                        speed= {p.speed}
-                                        height= {p.height}
-                                        weight= {p.weight}
-                                        image= {p.image}
-                                        types= {p.types.map(e => {
-                                                return (
-                                                    <h5 key={e.name}>{e.name.replace(/\b\w/g, l => l.toUpperCase())}</h5>
-                                                )})}
-                                        />
-                                </Link>
-                            </Fragment>
-                        );
-                    })
-                }
+                    {
+                        currentPokes?.map(p => {
+                            return (
+                                <Fragment>
+                                    <Link to={'/home/' + p.id} key={p.id} onClick={(p) => getPokemonDetail(p.id)}>
+                                        <Card 
+                                            name= {p.name}
+                                            hp= {p.hp}
+                                            attack= {p.attack}
+                                            defense= {p.defense}
+                                            speed= {p.speed}
+                                            height= {p.height}
+                                            weight= {p.weight}
+                                            image= {p.image}
+                                            types= {p.types.map(e => {
+                                                    return (
+                                                        <h5 key={e.name}>{e.name.replace(/\b\w/g, l => l.toUpperCase())}</h5>
+                                                    )})}
+                                            />
+                                    </Link>
+                                </Fragment>
+                            );
+                        })
+                    }
+                </div>
+
+                <Paginate
+                pokemonsPerPage = {pokemonsPerPage}
+                allPokemons = {allPokemons.length}
+                paginate = {paginate}
+                />
             </div>
-
-            <Paginate
-            pokemonsPerPage = {pokemonsPerPage}
-            allPokemons = {allPokemons.length}
-            paginate = {paginate}
-            />
 
         </div>
     )

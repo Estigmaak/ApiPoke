@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPokemonDetail } from '../actions'
 import { useEffect } from 'react';
 
-export function PokemonDetail(props) {
+export default function PokemonDetail(props) {
+    console.log(props)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -25,14 +26,14 @@ export function PokemonDetail(props) {
                 <div>
                     {/* // name, hp, attack, defense, speed, height, weight, image, types */}
                     <h3>{myPokemon[0].name}</h3>
-                    <img src={myPokemon[0].image ? myPokemon[0].img : myPokemon[0].image}></img>
+                    <img src={myPokemon[0].image}></img>
                     <h2>Stats</h2>
                     <p>Hp: {myPokemon[0].hp}</p>
                     <p>Attack: {myPokemon[0].attack}</p>
                     <p>Defense: {myPokemon[0].defense}</p>
                     <p>Speed: {myPokemon[0].speed}</p>
-                    <p>Heigt: {myPokemon[0].heigt}</p>
-                    <p>Weigt: {myPokemon[0].weigt}</p>
+                    <p>Heigt: {myPokemon[0].height}</p>
+                    <p>Weigt: {myPokemon[0].weight}</p>
                     <p>Types: {myPokemon[0].types.length > 1 ? myPokemon[0].types[0] + ', ' + myPokemon[0].types[1] : myPokemon[0].types[0]}</p>
                 </div>
                 :

@@ -81,13 +81,16 @@ router.get('/:id', async (req, res, next) => {
 
     if(id) {
         let pokeId = await allPokes.filter(e => e.id == id)
-        if(pokeId.length) {
-            res.status(200).json(pokeId) 
-        } else {
-            res.status(404).send('Sorry, Pokemon ID not found...');
-        }
-    } else {
-        res.status(200).send(allPokes)
+        pokeId.length ?
+        res.status(200).json(pokeId) :
+        res.status(404).send('Sorry, Pokemon no found...');
+    //     if(pokeId.length) {
+    //         res.status(200).json(pokeId) 
+    //     } else {
+    //         res.status(404).send('Sorry, Pokemon ID not found...');
+    //     }
+    // } else {
+    //     res.status(200).send(allPokes)
     }
 })
 
