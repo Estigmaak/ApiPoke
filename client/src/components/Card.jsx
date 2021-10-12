@@ -8,7 +8,7 @@ export default function Card({ name, hp, attack, defense, speed, height, weight,
         <Fragment>
             <div className={style.card}>
                 <h4>{name.replace(/\b\w/g, l => l.toUpperCase())}</h4>
-                <img src={image} alt='Sorry, img not found...' width='100px' height='150px'/>
+                <img src={image} alt='Sorry, img not found...' width='100px' height='120px'/>
                     <h5>Types:</h5>
                     <span key={types}>{types}</span>
             </div>

@@ -131,14 +131,14 @@ export default function Home(props) {
                                 );
                             })
                         }
-                    </div>
-                </div>
-            </div>
                 <Paginate
                 pokemonsPerPage = {pokemonsPerPage}
                 allPokemons = {allPokemons.length}
                 paginate = {paginate}
                 />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
