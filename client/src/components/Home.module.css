@@ -1,0 +1,85 @@
+.body {
+    background-image: url('https://www.xtrafondos.com/wallpapers/pokemon-unite-8254.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.gridContainer {
+    /* padding: 5px; */
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr); */
+    padding-left: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+}
+
+.button {
+    width: 80px;
+    height: 40px;
+    background-color: #FFE159;
+    border: 2px solid #030494;
+    border-radius: 0.2rem;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    /* font-family: "Arvo"; */
+    margin: 10px;
+    outline: none;
+}
+
+.button:hover {
+    box-shadow: 0px 0px 5px 1px #3132E0;
+    /* transform: translateY(-2px); */
+    width: 80px;
+    border-top: 3px solid #030494;
+    border-radius: 0.2rem;
+}
+
+.selectCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 40%;
+}
+
+.selectName {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #FFE159;
+    border: 1px solid #030494;
+}
+
+.selectAttack {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #FFE159;
+    border: 1px solid #030494;
+}
+
+.selectCreated {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #FFE159;
+    border: 1px solid #030494;
+}

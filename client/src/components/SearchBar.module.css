@@ -1,0 +1,33 @@
+.space {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.searchBar {
+    border-radius: 10px;
+    height: 25px;
+    background-color: #ffffff9f;
+    border: 2px solid #030494;
+}
+
+.button {
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    background-color: #FFE159;
+    border: 2px solid #030494;
+    border-radius: 0.2rem;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-family: "Arvo";
+    margin: 10px;
+    outline: none;
+}
+
+.button:hover {
+    box-shadow: 1px 1px 5px 1px #3132E0;
+    /* transform: translateY(-2px); */
+    width: 35px;
+    border-top: 3px solid #030494;
+    border-radius: 0.2rem;
+}

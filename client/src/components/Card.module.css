@@ -1,0 +1,34 @@
+.card {
+    display: flex;
+    max-width: 130px;
+    min-width: 130px;
+    min-height: 330px;
+    max-height: 330px;
+    flex-direction: column;
+    border: 1px solid #FFE159;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0.3rem;
+    position: relative;
+    margin: 10px;
+    flex: 1;
+    background-color: #e1c13198;
+    text-decoration: none;
+  }
+  
+  .card:hover {
+    box-shadow: 10px 5px 5px #E1C231;
+  }
+
+/* .card {
+    width: 130px;
+    height: 330px;
+    font-weight: bold;
+    border: 300 200;
+    justify-content: space-around;
+    margin: 10px;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+} */

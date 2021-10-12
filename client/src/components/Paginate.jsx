@@ -1,5 +1,7 @@
 import React from 'react';
 
+import style from './Paginate.module.css';
+
 export default function Paginate({pokemonsPerPage, allPokemons, paginate}) {
     const pageNumbers = []
     // vamos a recorrer un array en el que voy a tomar un numero que resulta de dividir todos los pokes por los pokes por pagina que quiero
@@ -9,9 +11,9 @@ export default function Paginate({pokemonsPerPage, allPokemons, paginate}) {
 
     return (
         <nav>
-            <ul className='paginado'>
+            <ul className={style.ul}>
                 {pageNumbers && pageNumbers.map(num => (
-                    <li className='pageNum' key={num}>
+                    <li className={style.button} key={num}>
                         <a onClick={() => paginate(num)}>{num}</a>
                     </li>
                 ))}
