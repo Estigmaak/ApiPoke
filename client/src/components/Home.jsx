@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filterPokemonsByTypes, filterPokemonsCreated, orderByName, orderByAttack, getPokemonDetail } from '../actions/index.js';
+import { getPokemons, getTypes , filterPokemonsByTypes, filterPokemonsCreated, orderByName, orderByAttack, getPokemonDetail } from '../actions/index.js';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import { Fragment } from 'react';
@@ -31,14 +31,18 @@ export default function Home(props) {
         dispatch(getPokemons())
     },[dispatch])
 
+    useEffect(() => {
+        dispatch(getTypes())
+    }, [])
+
     function handleClick(e){
         e.preventDefault();
         dispatch(getPokemons());
     }
 
-    // function handleFilterType(e){
-    //     dispatch(filterPokemonsByTypes(e.target.value));
-    // }
+    function handleFilterType(e){
+        dispatch(filterPokemonsByTypes(e.target.value));
+    }
 
     function handleFilterCreated(e){
         dispatch(filterPokemonsCreated(e.target.value));
@@ -73,6 +77,7 @@ export default function Home(props) {
                 <div>
                     <SearchBar/>
                 </div>
+                
                 <div>
                     <label>Order by:</label>
                     <div className={style.selectCont}>
@@ -90,6 +95,15 @@ export default function Home(props) {
                             <option value='desc'>Attack⬆</option>
                         </select>
 
+                        <select 
+                            className={style.selectType}
+                            onChange={e => handleFilterType(e)}>
+                            <option value='all'>All</option>
+                            {pokeTypes.map((type) => (
+                            <option value={type}>{type.replace(/\b\w/g, l => l.toUpperCase())}</option>
+                            ))}
+                        </select>
+
                         <select
                         className={style.selectCreated}
                         onChange={e => handleFilterCreated(e)}>
@@ -99,13 +113,6 @@ export default function Home(props) {
                         </select>
                     </div>
 
-
-                    {/* Chequear esto */}
-                    {/* <select onChange={e => handleFilterType(e)}>
-                        {pokeTypes.map((type) => (
-                            <option value={type.name}>{type.name}</option>
-                        ))}
-                    </select> */}
                     <div className={style.gridContainer}>
                         {
                             currentPokes?.map(p => {
@@ -131,11 +138,11 @@ export default function Home(props) {
                                 );
                             })
                         }
-                <Paginate
-                pokemonsPerPage = {pokemonsPerPage}
-                allPokemons = {allPokemons.length}
-                paginate = {paginate}
-                />
+                    <Paginate
+                    pokemonsPerPage = {pokemonsPerPage}
+                    allPokemons = {allPokemons.length}
+                    paginate = {paginate}
+                    />
                     </div>
                 </div>
             </div>
