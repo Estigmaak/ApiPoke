@@ -41,10 +41,12 @@ export default function Home(props) {
     }
 
     function handleFilterType(e){
+        e.preventDefault();
         dispatch(filterPokemonsByTypes(e.target.value));
     }
 
     function handleFilterCreated(e){
+        e.preventDefault();
         dispatch(filterPokemonsCreated(e.target.value));
     }
 
@@ -64,7 +66,7 @@ export default function Home(props) {
 
     return (
         <div className={style.body}>
-            <Link to= '/pokemon' text-decoration="none">
+            <Link to= '/pokemon'>
             <button className={style.button}>Create Pokemon</button></Link>
                 
             <button 
@@ -100,7 +102,7 @@ export default function Home(props) {
                             onChange={e => handleFilterType(e)}>
                             <option value='all'>All</option>
                             {pokeTypes.map((type) => (
-                            <option value={type}>{type.replace(/\b\w/g, l => l.toUpperCase())}</option>
+                            <option value={type} key={type}>{type.replace(/\b\w/g, l => l.toUpperCase())}</option>
                             ))}
                         </select>
 
@@ -117,7 +119,7 @@ export default function Home(props) {
                         {
                             currentPokes?.map(p => {
                                 return (
-                                    <Fragment>
+                                    <Fragment key={p.id}>
                                         <Link to={'/home/' + p.id} key={p.id} onClick={(p) => getPokemonDetail(p.id)}>
                                             <Card 
                                                 name= {p.name}

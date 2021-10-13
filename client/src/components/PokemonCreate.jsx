@@ -212,15 +212,17 @@ export default function PokemonCreate() {
                     className={style.selectType}
                     onChange={(e) => handleSelect(e)}>
                         {pokeTypes.map((type) => (
-                            <option value={type}>{type.replace(/\b\w/g, l => l.toUpperCase())}</option>
+                            <option value={type} key={type}>{type.replace(/\b\w/g, l => l.toUpperCase())}</option>
                         ))}
                     </select>
-                        <ul><div>{input.types.map(el => 
-                            <div>
-                                <p>{el.replace(/\b\w/g, l => l.toUpperCase())}</p>
-                                {/* <button onClick={(el) => handleDelete(el)}>x</button> */}
-                            </div>
-                        )}</div></ul>
+                        <ul>
+                            <div>{input.types.map(el => 
+                                <div key={el.id}>
+                                    <p>{el.replace(/\b\w/g, l => l.toUpperCase())}</p>
+                                    {/* <button onClick={(el) => handleDelete(el)}>x</button> */}
+                                </div>
+                            )}</div>
+                        </ul>
                     </div>
                 </div>
                     <button

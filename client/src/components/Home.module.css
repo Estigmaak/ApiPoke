@@ -43,7 +43,7 @@
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 40%;
+    padding-left: 35%;
 }
 
 .selectName {
@@ -73,6 +73,19 @@
 }
 
 .selectCreated {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #FFE159;
+    border: 1px solid #030494;
+}
+
+.selectType {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 10px;

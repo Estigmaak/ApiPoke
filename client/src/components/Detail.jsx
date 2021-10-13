@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import style from './Detail.module.css';
 
 export default function PokemonDetail(props) {
-    console.log(props)
+    // console.log(props)
     const dispatch = useDispatch();
 
     useEffect(() => {
