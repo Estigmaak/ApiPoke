@@ -66,7 +66,8 @@ router.get('/', async (req, res, next) => {
     let allPokes = await getAllPokes();
     
     if(name) {
-        let pokeName = await allPokes.filter(e => e.name.toLowerCase().includes(name.toLocaleLowerCase()))
+        // let pokeName = await allPokes.filter(e => e.name.toLowerCase().includes(name.toLocaleLowerCase()))
+        let pokeName = await allPokes.filter(e => e.name.toLowerCase() === name.toLocaleLowerCase())
         pokeName.length ?
         res.status(200).send(pokeName) :
         res.status(404).send('Sorry, Pokemon name not found...');
