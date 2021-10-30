@@ -1,8 +1,8 @@
 .body {
     background-image: url('https://safebooru.org//images/3112/86a93a885fa141a46be357394e3b8408eff13888.jpg');
-    background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center;
+    height: 801px;
 }
 
 .button {
@@ -27,19 +27,20 @@
 }
 
 .blurbox{
+    margin: auto;
     background-color: rgba(255, 255, 255, 0.24);
     border-radius: 15px;
     text-align: center;
     line-height: 1;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    height: 50%;
     max-width: 50%;
-    max-height: 50%;
-    padding: 40px 20px;
-    margin-left: 280px;
 }
 
 .title {
+    margin-top: 80px;
+    padding-top: 30px;
     color: #E1C231;
 }
 

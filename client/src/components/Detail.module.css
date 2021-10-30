@@ -1,48 +1,42 @@
 .body {
   background-image: url('https://www.xtrafondos.com/wallpapers/pokemon-unite-8254.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 801px;
 }
 
 .card {
-    border: 1px solid #FFE159;
-    border-radius: 0.3rem;
-    position: relative;
-    margin-left: 40%;
-    max-width: 250px;
-    min-width: 250px;
-    min-height: 25rem;
-    max-height: 40rem;
-    flex: 1;
-    background-color: #e1c13198;
-    text-align: center;
+  position: relative;
+  margin-left: 39%;
+  /* top: 30px; */
+  border: 1px solid #FFE159;
+  border-radius: 0.3rem;
+  max-width: 350px;
+  min-width: 350px;
+  
+  min-height: 25rem;
+  max-height: 40rem;
+  flex: 1;
+  background-color: #e1c13198;
+  text-align: center;
   }
   
   .card:hover {
     box-shadow: 0px 0px 10px #E1C231;
   }
   
-  .img {
-    width: 100%;
-    max-height: 125px;
-    min-width: 250px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  
   .name {
-    font-size: 22px;
-    margin-bottom: 0px;
+    font-size: 30px;
   }
 
   .stat {
-    font-size: 18px;
-    margin-bottom: 0px;
+    font-size: 20px;
+    margin-top: -5px;
   }
 
   .p {
-    font-size: 12px;
+    margin-top: 18px;
+    font-size: 15px;
   }
   
   .button {

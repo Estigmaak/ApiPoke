@@ -1,7 +1,7 @@
 .ul {
     list-style:none;
-    position:relative;
-    left: 130%;
+    position: absolute;
+    left: 42.5%;
 }
 
 .button {

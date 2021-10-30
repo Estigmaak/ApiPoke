@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNamePokemons } from '../actions';
+//import { getAttackPoke } from '../actions'
 import { BsSearch } from 'react-icons/bs';
 
 import style from './SearchBar.module.css';
@@ -20,6 +21,13 @@ export default function SearchBar () {
         dispatch(getNamePokemons(name))
         setName('');
     }
+
+    //Buscar por puntos en ataque
+    // function handleSubmit(e) {
+    //     e.preventDefault(e);
+    //     dispatch(getAttackPoke(name))
+    //     setName('');
+    // }
 
     return (
         <form

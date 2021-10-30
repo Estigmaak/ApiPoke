@@ -109,7 +109,6 @@ export default function PokemonCreate() {
                 <h2 className={style.title}>¡Create your Pokemon!</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
-
                     <div>
                         <label>Name:  </label>
                         <input

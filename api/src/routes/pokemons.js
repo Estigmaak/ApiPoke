@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Op } = require('sequelize');
+//const { Op } = require('sequelize');
 const { Pokemon, Type } = require('../db.js');
 const axios = require('axios');
 

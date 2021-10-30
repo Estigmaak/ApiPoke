@@ -107,6 +107,14 @@ function rootReducer (state = initialState, action) {
                     ...state,
                     detail: action.payload
                 }
+            
+            // case 'GET_ATTACK_POKE':
+            //     const allPokes = state.allPokemons
+            //     const filteredAttack = allPokes.filter(e => e.attack >= action.payload)
+            //     return{
+            //         ...state,
+            //         pokemons: filteredAttack ? filteredAttack : state.allPokemons
+            //     }
                 
                 default:
                     return state;

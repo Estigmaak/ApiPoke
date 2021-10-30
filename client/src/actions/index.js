@@ -82,3 +82,10 @@ export function getPokemonDetail(id) {
         }
     }
 }
+
+// export function getAttackPoke(payload) {
+//     return {
+//         type: 'GET_ATTACK_POKE',
+//         payload
+//     }
+// }

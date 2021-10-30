@@ -30,7 +30,7 @@ export default function PokemonDetail(props) {
                 <div>
                     {/* // name, hp, attack, defense, speed, height, weight, image, types */}
                     <h2 className={style.name}>{myPokemon[0].name.replace(/\b\w/g, l => l.toUpperCase())}</h2>
-                    <img src={myPokemon[0].image} alt='' width='200px' height='250px'/>
+                    <img src={myPokemon[0].image} alt='img pokemon' width='280px' height='280px'/>
                     <h3 className={style.stat}>Stats</h3>
                     <p className={style.p}>Hp: {myPokemon[0].hp}</p>
                     <p className={style.p}>Attack: {myPokemon[0].attack}</p>
