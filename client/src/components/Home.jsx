@@ -33,7 +33,7 @@ export default function Home(props) {
 
     useEffect(() => {
         dispatch(getTypes())
-    }, [])
+    },[dispatch])
 
     function handleClick(e){
         e.preventDefault();
