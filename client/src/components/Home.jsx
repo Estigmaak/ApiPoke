@@ -29,11 +29,11 @@ export default function Home(props) {
     //ComponentDidMount
     useEffect(() => {
         dispatch(getPokemons())
-    },[dispatch])
+    },[])
 
     useEffect(() => {
         dispatch(getTypes())
-    },[dispatch])
+    },[])
 
     function handleClick(e){
         e.preventDefault();
