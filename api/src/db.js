@@ -5,9 +5,6 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
-// const {
-//   DB_USER, DB_PASSWORD, DB_HOST
-// } = process.env;//LOCAL
 
 // Este coodigo es para deploy
 let sequelize =
